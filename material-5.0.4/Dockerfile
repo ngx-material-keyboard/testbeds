@@ -1,8 +1,20 @@
-FROM ngxmaterialkeyboard/testbeds:base
+FROM node:8
 
 LABEL authors="David Enke <post@davidenke.de>"
 
-RUN apk update \
-  && npm install @angular/cli@1.7.4 \
-  && rm -rf /tmp/* /var/cache/apk/* *.tar.gz ~/.npm \
+RUN mkdir -p /testbed
+
+WORKDIR /testbed
+
+ADD app /testbed/
+
+VOLUME /testbed
+
+RUN npm install \
+    --no-audit \
+    --no-optional \
+    --no-package-lock \
+    --no-progress \
+    --loglevel=error \
+  && rm -rf /tmp/* *.tar.gz ~/.npm \
   && npm cache clear --force

@@ -16,5 +16,4 @@ RUN npm install \
     --no-package-lock \
     --no-progress \
     --loglevel=error \
-  && rm -rf /tmp/* *.tar.gz ~/.npm \
-  && npm cache clear --force
+  && rm -rf /tmp/* *.tar.gz ~/.npm

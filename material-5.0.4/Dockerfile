@@ -8,12 +8,11 @@ WORKDIR /testbed
 
 ADD app /testbed/
 
-VOLUME /testbed
-
 RUN npm install \
     --no-audit \
     --no-optional \
     --no-package-lock \
     --no-progress \
-    --loglevel=error \
-  && rm -rf /tmp/* *.tar.gz ~/.npm
+    --loglevel=error
+
+VOLUME /testbed
